@@ -4,7 +4,7 @@
     :root {
         --header-height: 3rem;
         --nav-width: 68px;
-        --first-color: #4723D9;
+        --first-color: #326CBC;
         --first-color-light: #AFA5D9;
         --white-color: #F7F6FB;
         --body-font: 'Nunito', sans-serif;
@@ -45,6 +45,7 @@
         z-index: var(--z-fixed);
         transition: .5s
     }
+
 
     .header_toggle {
         color: var(--first-color);
