@@ -1,13 +1,13 @@
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
     :root {
-        --header-height: 3rem;
+        --header-height: 6rem;
         --nav-width: 68px;
-        --first-color: #4723D9;
+        --first-color: #326CBC;
         --first-color-light: #AFA5D9;
         --white-color: #F7F6FB;
-        --body-font: 'Nunito', sans-serif;
+        --body-font: "Montserrat", sans-serif;
         --normal-font-size: 1rem;
         --z-fixed: 100
     }
@@ -46,18 +46,34 @@
         transition: .5s
     }
 
+    .header_left {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 1rem;
+    }
+
     .header_toggle {
         color: var(--first-color);
         font-size: 1.5rem;
         cursor: pointer
     }
 
+    .header_text {
+        font-family: var(--body-font);
+        background: linear-gradient(45deg, #07A4E3, #38C8F1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 40px;
+        font-weight: bold;
+        padding: 0 1rem;
+    }
+
     .header_img {
-        width: 35px;
-        height: 35px;
+        width: 50px;
+        height: 50px;
         display: flex;
         justify-content: center;
-        border-radius: 50%;
         overflow: hidden
     }
 
@@ -148,6 +164,61 @@
         height: 100vh
     }
 
+    .container {
+        margin: 40px auto;
+        width: 80%;
+    }
+
+    .welcome h1 {
+        font-size: 64px;
+        color: #6c7a89;
+        font-weight: bold;
+    }
+
+    .welcome p {
+        font-size: 40px;
+        color: #a0a5ad;
+        margin-top: -10px;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        
+    }
+
+    .card {
+        width: 300px;
+        height: 200px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border: 2px solid #E0E0E0;
+        position: relative;
+    }
+
+    .line {
+        width: 2px;
+        height: 60%;
+        background: black;
+        position: absolute;
+        left: 30px;
+    }
+
+    .text {
+        font-size: 45px;
+        font-weight: bold;
+        color: #6c7a89;
+        font-family: var(--body-font);
+
+    }
+
     @media screen and (min-width: 768px) {
         body {
             margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -180,5 +251,6 @@
         .body-pd {
             padding-left: calc(var(--nav-width) + 188px)
         }
+
     }
 </style>

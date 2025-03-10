@@ -11,13 +11,13 @@
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link rel="stylesheet" href="{{asset('bs/css/bootstrap.min.css')}}">
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    
-    
+
+
     @stack('styles_top')
     @include('layout.styles.style')
     <style>
@@ -27,9 +27,11 @@
 
 <body id="body-pd">
     <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
-
+        <div class="header_left">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <div class="header_text">SatoeTrack✓</div>
+        </div>
+        <div class="header_img"> <img src="{{ asset('assets/smkn1.png') }}" alt="logo"> </div>
         @if(session()->has('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -42,9 +44,16 @@
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">BBBootstrap</span> </a>
-                <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a> <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a> <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> </div>
-            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+            <div>
+                <div class="d-flex align-items-center p-3">
+                    <a href="#" class="nav_logo">
+                        <img src="{{ asset('assets/avatar.png') }}" width="50" height="50" alt="Avatar">
+                        <span class="nav_logo-name ms-3 fw-bold fs-5">Ian</span>
+                    </a>
+                </div>
+                <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"> <i class="bx bx-history nav_icon"></i>
+                        <span class="nav_name">Riwayat pinjam</span> </a></div>
+            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Log Out</span> </a>
         </nav>
     </div>
     <main>
@@ -100,6 +109,39 @@
             // Your code to run since DOM is loaded and ready
         });
     </script>
+    <div class="container">
+
+                <div class="welcome">
+                    <h1>Welcome, Ian Sopian.</h1>
+                    <p>lorem ipsum dolor sit amet.</p>
+                </div>
+           
+
+
+        <div class="cards">
+            <div class="row d-flex justify-content-start">
+                <div class="col-md-6 d-flex">
+                    <a href="" class="card p-4">
+                        <div class="line"></div>
+                        <h2 class="text">Jurusan</h2>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="" class="card p-4">
+                        <div class="line"></div>
+                        <h2 class="text">Tata<br>Usaha</h2>
+                    </a>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center mt-5">
+                    <a href="" class="card p-4">
+                        <div class="line"></div>
+                        <h2 class="text">Sarpras</h2>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
 </body>
 
 </html>
