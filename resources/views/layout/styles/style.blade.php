@@ -1,9 +1,12 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    /* SIDEBAR */
+    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
     :root {
         --header-height: 6rem;
         --nav-width: 68px;
+        --sidebar-expanded-width: 224px;
         --first-color: #326CBC;
         --first-color-light: #AFA5D9;
         --white-color: #F7F6FB;
@@ -14,7 +17,7 @@
 
     *,
     ::before,
-    ::after {
+    ::after { 
         box-sizing: border-box
     }
 
@@ -98,7 +101,8 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        overflow: hidden
+        overflow: auto;
+        scrollbar-width: none;
     }
 
     .nav_logo,
@@ -127,11 +131,12 @@
     .nav_link {
         position: relative;
         color: var(--first-color-light);
-        margin-bottom: 1.5rem;
+        margin-bottom: .8rem;
         transition: .3s
     }
 
     .nav_link:hover {
+        font-weight: bold !important;
         color: var(--white-color)
     }
 
@@ -148,6 +153,7 @@
     }
 
     .active {
+        font-weight: bold !important;
         color: var(--white-color)
     }
 
@@ -162,6 +168,117 @@
 
     .height-100 {
         height: 100vh
+    }
+
+    /* Accordion menu styling */
+    .nav_accordion {
+        position: relative;
+        width: 100%;
+    }
+
+    .accordion-toggle {
+        display: grid;
+        grid-template-columns: max-content 1fr max-content;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    .nav_accordion-icon {
+        transition: transform 0.3s;
+        justify-self: end;
+        margin-right: 10px;
+    }
+
+    .accordion-toggle.active .nav_accordion-icon {
+        transform: rotate(180deg);
+    }
+
+    .accordion-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.2s ease;
+        opacity: 0;
+    }
+
+    .accordion-menu.open {
+        max-height: 500px;
+        /* Adjust as needed */
+        opacity: 1;
+    }
+
+    .sub-link {
+        padding-left: 2.5rem;
+        font-size: 0.9rem;
+        opacity: 0.85;
+        margin-bottom: 0.3rem;
+    }
+
+    .sub-link:hover {
+        opacity: 1;
+    }
+
+    /* Responsive Styles */
+    @media screen and (min-width: 576px) {
+
+        /* Styles for screens 576px and larger */
+        body {
+            padding-left: calc(var(--nav-width) + 1rem);
+            transition: padding-left 0.3s ease-in-out;
+        }
+
+        body.body-expanded {
+            padding-left: calc(var(--sidebar-expanded-width) + 1rem);
+        }
+
+        .header {
+            padding-left: calc(var(--nav-width) + 1rem);
+            transition: padding-left 0.3s ease-in-out;
+        }
+
+        .header.header-expanded {
+            padding-left: calc(var(--sidebar-expanded-width) + 1rem);
+        }
+
+        .l-navbar {
+            left: 0;
+            width: var(--nav-width);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .l-navbar:hover,
+        .l-navbar.expanded {
+            width: var(--sidebar-expanded-width);
+        }
+
+        /* Hide text in collapsed state */
+        .nav_name,
+        .nav_logo-name {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        /* Show text in expanded state */
+        .l-navbar:hover .nav_name,
+        .l-navbar:hover .nav_logo-name,
+        .l-navbar.expanded .nav_name,
+        .l-navbar.expanded .nav_logo-name {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Accordion icon visibility */
+        .nav_accordion-icon {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .l-navbar:hover .nav_accordion-icon,
+        .l-navbar.expanded .nav_accordion-icon {
+            opacity: 1;
+            visibility: visible;
+        }
     }
 
     .container {
@@ -222,12 +339,20 @@
     @media screen and (min-width: 768px) {
         body {
             margin: calc(var(--header-height) + 1rem) 0 0 0;
-            padding-left: calc(var(--nav-width) + 2rem)
+            padding-left: calc(var(--nav-width) + 2rem);
+        }
+
+        body.body-expanded {
+            padding-left: calc(var(--sidebar-expanded-width) + 2rem);
         }
 
         .header {
             height: calc(var(--header-height) + 1rem);
-            padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+            padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
+        }
+
+        .header.header-expanded {
+            padding-left: calc(var(--sidebar-expanded-width) + 2rem);
         }
 
         .header_img {
@@ -240,7 +365,6 @@
         }
 
         .l-navbar {
-            left: 0;
             padding: 1rem 1rem 0 0
         }
 
