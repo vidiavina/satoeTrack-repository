@@ -1,13 +1,14 @@
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
     :root {
         --header-height: 6rem;
         --nav-width: 68px;
         --first-color: #326CBC;
         --first-color-light: #AFA5D9;
         --white-color: #F7F6FB;
-        --body-font: "Montserrat", sans-serif;
+        --body-font: "Nunito", sans-serif;
+        --header-font: "Montserrat", sans-serif;
         --normal-font-size: 1rem;
         --z-fixed: 100
     }
@@ -60,7 +61,7 @@
     }
 
     .header_text {
-        font-family: var(--body-font);
+        font-family: var(--header-font);
         background: linear-gradient(45deg, #07A4E3, #38C8F1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -168,8 +169,14 @@
         margin: 40px auto;
         width: 80%;
     }
+    .welcome {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
 
     .welcome h1 {
+        font-family: var(--header-font);
         font-size: 64px;
         color: #6c7a89;
         font-weight: bold;
@@ -180,13 +187,18 @@
         color: #a0a5ad;
         margin-top: -10px;
     }
+    .arrow{
+
+    font-size: 40px;
+    color: black;
+    }
 
     .cards {
         display: flex;
         justify-content: center;
         gap: 20px;
         margin-top: 20px;
-        
+
     }
 
     .card {
@@ -198,7 +210,7 @@
         justify-content: center;
         background: white;
         border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
         border: 2px solid #E0E0E0;
         position: relative;
     }
@@ -206,7 +218,7 @@
     .line {
         width: 2px;
         height: 60%;
-        background: black;
+        background: #6c7a89;
         position: absolute;
         left: 30px;
     }
@@ -218,6 +230,14 @@
         font-family: var(--body-font);
 
     }
+
+    .jurusan {
+        font-size: 25px;
+        color: #6c7a89;
+        font-family: var(--body-font);
+        padding-left: 20px;
+    }
+
 
     @media screen and (min-width: 768px) {
         body {

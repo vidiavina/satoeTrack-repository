@@ -110,37 +110,78 @@
         });
     </script>
     <div class="container">
+        <div class="welcome">
+            <a href="" class="arrow">
+            <i class="bx bx-left-arrow-alt"></i>
+            </a>
+            <h1>Pilih Jurusan</h1>
+        </div>
 
-                <div class="welcome">
-                    <h1>Welcome, Ian Sopian.</h1>
-                    <p>lorem ipsum dolor sit amet.</p>
-                </div>
-           
 
 
-        <div class="cards">
-            <div class="row d-flex justify-content-start">
-                <div class="col-md-6 d-flex">
-                    <a href="{{ route('jurusan') }}" class="card p-4">
-                        <div class="line"></div>
-                        <h2 class="text">Jurusan</h2>
-                    </a>
-                </div>
-                <div class="col-md-6">
+        <div class="container mt-5">
+            <!-- Baris Pertama: 3 Card -->
+            <div class="row">
+                <div class="col-md-4 mb-4 ">
                     <a href="" class="card p-4">
                         <div class="line"></div>
-                        <h2 class="text">Tata<br>Usaha</h2>
+                        <h2 class="jurusan">Pengembangan perangkat lunak dan gim</h2>
                     </a>
                 </div>
-                <div class="col-md-12 d-flex justify-content-center mt-5">
+                <div class="col-md-4 mb-4">
                     <a href="" class="card p-4">
                         <div class="line"></div>
-                        <h2 class="text">Sarpras</h2>
+                        <h2 class="jurusan">Teknik komputer jaringan</h2>
                     </a>
                 </div>
+                <div class="col-md-4 mb-4">
+                    <a href="" class="card p-4">
+                        <div class="line"></div>
+                        <h2 class="jurusan">Desain Komunikasi Visual</h2>
+                    </a>
+                </div>
+            </div>
 
+            <!-- Baris Kedua: 3 Card -->
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <a href="" class="card p-4">
+                        <div class="line"></div>
+                        <h2 class="jurusan">Teknik Kendaraan Ringan</h2>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <a href="" class="card p-4">
+                        <div class="line"></div>
+                        <h2 class="jurusan">Teknik Permesinan</h2>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <a href="" class="card p-4">
+                        <div class="line"></div>
+                        <h2 class="jurusan">Teknik Pengelasan</h2>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Baris Ketiga: 2 Card Ditengah -->
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <a href="" class="card p-4">
+                        <div class="line"></div>
+                        <h2 class="jurusan">Busana Butik</h2>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <a href="" class="card p-4">
+                        <div class="line"></div>
+                        <h2 class="jurusan">Akuntansi</h2>
+                    </a>
+                </div>
             </div>
         </div>
+    </div>
+    </div>
 
 </body>
 
