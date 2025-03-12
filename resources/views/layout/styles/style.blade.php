@@ -1,20 +1,30 @@
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
     /* SIDEBAR */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
     @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
     :root {
-        --header-height: 6rem;
+        --header-height: 5rem;
         --nav-width: 68px;
         --sidebar-expanded-width: 224px;
         --first-color: #326CBC;
         --first-color-light: #AFA5D9;
         --white-color: #F7F6FB;
-        --body-font: "Montserrat", sans-serif;
+        --secondary-color: #719099;
+        --msr-font: "Montserrat", sans-serif;
+        --body-font: "Nunito", sans-serif;
         --normal-font-size: 1rem;
         --z-fixed: 100
     }
 
+    .secondary-color {
+        color: var(--secondary-color);
+    }
+    
+    .msr-font {
+        font-family: "Montserrat", sans-serif;
+    }
+    
     *,
     ::before,
     ::after { 
@@ -27,7 +37,8 @@
         padding: 0 1rem;
         font-family: var(--body-font);
         font-size: var(--normal-font-size);
-        transition: .5s
+        transition: .5s;
+        background-color: var(--white-color);
     }
 
     a {
@@ -44,44 +55,42 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 1rem;
-        background-color: var(--white-color);
+        background-color: white;
         z-index: var(--z-fixed);
-        transition: .5s
+        transition: .5s;
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.3);
+
     }
 
     .header_left {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        padding: 0 1rem;
+        padding: 0 1rem 0 0;
     }
 
     .header_toggle {
+        margin-top: 10px;
         color: var(--first-color);
         font-size: 1.5rem;
         cursor: pointer
     }
 
     .header_text {
-        font-family: var(--body-font);
+        font-family: var(--msr-font);
         background: linear-gradient(45deg, #07A4E3, #38C8F1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 40px;
         font-weight: bold;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
 
     .header_img {
-        width: 50px;
-        height: 50px;
+        width: 70px;
         display: flex;
-        justify-content: center;
+        justify-content: end;
         overflow: hidden
-    }
-
-    .header_img img {
-        width: 40px
     }
 
     .l-navbar {
@@ -115,7 +124,14 @@
     }
 
     .nav_logo {
-        margin-bottom: 2rem
+        margin-top: 10px;
+        margin-bottom: 2rem;
+    }
+    
+    .nav-logo-avatar {
+        display: flex;
+        justify-content: flex-start;
+        width: 25px;
     }
 
     .nav_logo-icon {
@@ -307,17 +323,15 @@
     }
 
     .card {
-        width: 300px;
         height: 200px;
-        padding: 20px;
+        max-height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: white;
-        border-radius: 12px;
+        background: white;  
+        border-radius: 12px;    
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         border: 2px solid #E0E0E0;
-        position: relative;
     }
 
     .line {
@@ -336,14 +350,13 @@
 
     }
 
+    main {
+        padding-top: 1rem;
+    }
+    
     @media screen and (min-width: 768px) {
         body {
             margin: calc(var(--header-height) + 1rem) 0 0 0;
-            padding-left: calc(var(--nav-width) + 2rem);
-        }
-
-        body.body-expanded {
-            padding-left: calc(var(--sidebar-expanded-width) + 2rem);
         }
 
         .header {
@@ -353,15 +366,6 @@
 
         .header.header-expanded {
             padding-left: calc(var(--sidebar-expanded-width) + 2rem);
-        }
-
-        .header_img {
-            width: 40px;
-            height: 40px
-        }
-
-        .header_img img {
-            width: 45px
         }
 
         .l-navbar {
