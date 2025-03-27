@@ -13,10 +13,11 @@
     <meta content="" name="keywords">
 
     <!-- Bootstrap CSS v5.2.1 -->
-     <link rel="stylesheet" href="{{asset('bs/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('bs/css/bootstrap.min.css')}}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
     @stack('styles_top')
     @include('layout.styles.style')
     <style>
@@ -65,9 +66,9 @@
                                 <i class='bx bx-user-plus nav_icon'></i>
                                 <span class="nav_name">Add User</span>
                             </a>
-                            <a href="#" class="nav_link sub-link">
+                            <a href="{{ url('/kelola-admin') }}" class="nav_link sub-link {{ request()->is('/kelola-admin') ? 'active' : '' }}"> 
                                 <i class='bx bx-group nav_icon'></i>
-                                <span class="nav_name">User Groups</span>
+                                <span class="nav_name">Add Admin</span>
                             </a>
                             <a href="#" class="nav_link sub-link">
                                 <i class='bx bx-user-check nav_icon'></i>
@@ -136,13 +137,39 @@
         <!-- place footer here -->
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
-     <script src="{{asset('bs/js/bootstrap.min.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/s4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @stack('scripts_bottom')
+    <script src="{{asset('bs/js/bootstrap.min.js')}}"></script>
     @include('layout.scripts.script')
+    
+    <script>
+        $(document).ready(function() {
+        $('.data-table').DataTable({
+            // searchable: true,
+            // fixedHeight: true,
+            // fixedHeader: true,
+            // fixedHeaderOffset: 56,
+            // fixedHeaderOffset: 56,
+            // sortable: true,
+            // fixedColumns: true,
+            // fixedColumnsLeft: 1,
+            // fixedColumnsRight: 0,
+            // perPageSelect: true,
+            // perPage: 10,
+            // perPageSelect: [5, 10, 20, 50, 100],
+            // labels: {
+            //     placeholder: "Cari...",
+            //     perPage: "{select}",
+            //     noRows: "Tidak ada data",
+            //     info: "Menampilkan {start} sampai {end} dari {rows} baris",
+            // },
+        });
+        
+        $('.select2').select2();
+    });
+    </script>
     
     @if(session()->has('success'))
         <div class="alert alert-success">

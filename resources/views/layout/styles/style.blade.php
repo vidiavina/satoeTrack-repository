@@ -17,14 +17,14 @@
     .secondary-color {
         color: var(--secondary-color);
     }
-    
+
     .msr-font {
         font-family: "Montserrat", sans-serif;
     }
-    
+
     *,
     ::before,
-    ::after { 
+    ::after {
         box-sizing: border-box
     }
 
@@ -75,7 +75,8 @@
     }
 
     .header_text {
-        font-family: var(--header-font);
+        outline: 0 !important;
+        font-family: var(--msr-font);
         background: linear-gradient(45deg, #07A4E3, #38C8F1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -125,7 +126,7 @@
         margin-top: 10px;
         margin-bottom: 2rem;
     }
-    
+
     .nav-logo-avatar {
         display: flex;
         justify-content: flex-start;
@@ -332,18 +333,6 @@
 
     }
 
-    .card {
-        height: 200px;
-        max-height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-        border: 2px solid #E0E0E0;
-    }
-
     .line {
         width: 2px;
         height: 60%;
@@ -371,7 +360,7 @@
     main {
         padding-top: 1rem;
     }
-    
+
     @media screen and (min-width: 768px) {
         body {
             margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -398,5 +387,49 @@
             padding-left: calc(var(--nav-width) + 188px)
         }
 
+    }
+
+    /* GENERAL */
+    .d-flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .d-flex-jend {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    /* BUTTONS */
+    .btn-main {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(45deg, #07A4E3, #38C8F1);
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .btn-main:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-main:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    div.dt-container .dt-paging .dt-paging-button:hover, div.dt-container .dt-paging .dt-paging-button:active {
+        border-color: #07A4E3;
+        background: linear-gradient(45deg, #07A4E3, #38C8F1);   
     }
 </style>

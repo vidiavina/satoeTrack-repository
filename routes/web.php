@@ -1,11 +1,12 @@
 <?php
 
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 
 
 Route::prefix('/')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/kelola-admin', [AdminController::class, 'index'])->name('kelola-admin');
 });
 
 Route::get('/jurusan', function () {
