@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('no_telp', 15)->unique()->nullable();
             $table->string('password');
-            $table->tinyInteger('role');
+            $table->tinyInteger('role')->comment('1=superadmin, 2=admin tu, 3=admin jurusan');
             $table->timestamps();
         });
     }

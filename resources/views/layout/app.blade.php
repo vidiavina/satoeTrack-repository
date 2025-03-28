@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="" name="description">
@@ -17,7 +17,7 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     @stack('styles_top')
     @include('layout.styles.style')
     <style>
@@ -31,8 +31,8 @@
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
             <a class="header_text" href="{{ url('/') }}" class="nav_link {{ request()->is('/') ? 'active' : '' }}">SatoeTrack✓</a>
         </div>
-        <div class="header_img"> 
-            <img src="{{ asset('assets/smkn1.png') }}" alt="logo" style="width: 100%; height: 100%;"> 
+        <div class="header_img">
+            <img src="{{ asset('assets/smkn1.png') }}" alt="logo" style="width: 100%; height: 100%;">
         </div>
     </header>
     <!-- Sidebar -->
@@ -45,15 +45,15 @@
                 </a>
                 <div class="nav_list">
                     <!-- Simple nav links -->
-                    <a href="{{ url('/') }}" class="nav_link {{ request()->is('/') ? 'active' : '' }}"> 
+                    <a href="{{ url('/') }}" class="nav_link {{ request()->is('/') ? 'active' : '' }}">
                         <i class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Dashboard</span>
                     </a>
-                    <a href="#" class="nav_link"> 
+                    <a href="#" class="nav_link">
                         <i class='bx bx-box nav_icon'></i>
                         <span class="nav_name">Kelola Barang</span>
                     </a>
-                    
+
                     <!-- Accordion Menu 1 -->
                     <div class="nav_accordion">
                         <a href="#" class="nav_link accordion-toggle">
@@ -66,7 +66,7 @@
                                 <i class='bx bx-user-plus nav_icon'></i>
                                 <span class="nav_name">Add User</span>
                             </a>
-                            <a href="{{ url('/kelola-admin') }}" class="nav_link sub-link {{ request()->is('/kelola-admin') ? 'active' : '' }}"> 
+                            <a href="{{ url('/kelola-admin') }}" class="nav_link sub-link {{ request()->is('/kelola-admin') ? 'active' : '' }}">
                                 <i class='bx bx-group nav_icon'></i>
                                 <span class="nav_name">Add Admin</span>
                             </a>
@@ -140,46 +140,76 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     @stack('scripts_bottom')
     <script src="{{asset('bs/js/bootstrap.min.js')}}"></script>
     @include('layout.scripts.script')
-    
+
     <script>
         $(document).ready(function() {
-        $('.data-table').DataTable({
-            // searchable: true,
-            // fixedHeight: true,
-            // fixedHeader: true,
-            // fixedHeaderOffset: 56,
-            // fixedHeaderOffset: 56,
-            // sortable: true,
-            // fixedColumns: true,
-            // fixedColumnsLeft: 1,
-            // fixedColumnsRight: 0,
-            // perPageSelect: true,
-            // perPage: 10,
-            // perPageSelect: [5, 10, 20, 50, 100],
-            // labels: {
-            //     placeholder: "Cari...",
-            //     perPage: "{select}",
-            //     noRows: "Tidak ada data",
-            //     info: "Menampilkan {start} sampai {end} dari {rows} baris",
-            // },
+            $('.data-table').DataTable({
+                // searchable: true,
+                // fixedHeight: true,
+                // fixedHeader: true,
+                // fixedHeaderOffset: 56,
+                // fixedHeaderOffset: 56,
+                // sortable: true,
+                // fixedColumns: true,
+                // fixedColumnsLeft: 1,
+                // fixedColumnsRight: 0,
+                // perPageSelect: true,
+                // perPage: 10,
+                // perPageSelect: [5, 10, 20, 50, 100],
+                // labels: {
+                // placeholder: "Cari...",
+                // perPage: "{select}",
+                // noRows: "Tidak ada data",
+                // info: "Menampilkan {start} sampai {end} dari {rows} baris",
+                // },
+            });
+
+            $('.select2').select2();
         });
-        
-        $('.select2').select2();
-    });
+
+        @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: "{{ session('success') }}",
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        });
+        @endif
+
+        @if(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "{{ session('error') }}",
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        });
+        @endif
+
+        @if($errors->any())
+        Swal.fire({
+            icon: 'error',
+            title: 'Terjadi Kesalahan!',
+            html: `
+        <ul style='text-align: left; list-style-type: none; padding: 0;'>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        `,
+        });
+        @endif
     </script>
-    
-    @if(session()->has('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @elseif(session()->has('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
 </body>
 
 </html>

@@ -63,7 +63,7 @@
         // Define functions for different behaviors
         function originalToggleFunction() {
             // Original behavior (for small screens)
-            nav.classList.toggle('show');
+            nav.classList.toggle('show-custom');
             toggle.classList.toggle('bx-x');
             body.classList.toggle('body-pd');
             header.classList.toggle('body-pd');

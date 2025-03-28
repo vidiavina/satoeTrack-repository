@@ -159,7 +159,7 @@
         font-size: 1.25rem
     }
 
-    .show {
+    .show-custom {
         left: 0
     }
 
@@ -379,7 +379,7 @@
             padding: 1rem 1rem 0 0
         }
 
-        .show {
+        .show-custom {
             width: calc(var(--nav-width) + 156px)
         }
 
