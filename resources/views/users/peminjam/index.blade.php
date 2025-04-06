@@ -565,14 +565,6 @@
         }
     }
 
-    function isNumber(evt) {
-        let charCode = evt.which ? evt.which : evt.keyCode;
-        if (charCode < 48 || charCode > 57) {
-            return false; // Only allow digits (0-9)
-        }
-        return true;
-    }
-
     // Real-time search functionality
     document.addEventListener('DOMContentLoaded', function() {
         const searchInput = document.getElementById('searchInput');

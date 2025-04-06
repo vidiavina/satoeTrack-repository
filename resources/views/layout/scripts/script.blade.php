@@ -2,6 +2,14 @@
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     
+    function isNumber(evt) {
+        let charCode = evt.which ? evt.which : evt.keyCode;
+        if (charCode < 48 || charCode > 57) {
+            return false; // Only allow digits (0-9)
+        }
+        return true;
+    }
+    
     document.addEventListener("DOMContentLoaded", function (event) {
         const toggle = document.getElementById('header-toggle');
         const nav = document.getElementById('nav-bar');

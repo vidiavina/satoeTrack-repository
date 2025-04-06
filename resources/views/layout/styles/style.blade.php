@@ -306,7 +306,6 @@
         }
     }
 
-
     .welcome {
     display: flex;
     align-items: flex-start; 
@@ -318,8 +317,7 @@
     color: black;
     margin-right: 15px;
 }
-
-
+    
 .title h1 {
     font-family: var(--header-font);
     font-size: 44px;
@@ -344,9 +342,9 @@
     }
 
     .line {
-        width: 2px;
-        height: 60%;
-        background: #6c7a89;
+        width: 1px;
+        height: 75%;
+        background: var(--first-color-light);
         position: absolute;
         left: 30px;
     }

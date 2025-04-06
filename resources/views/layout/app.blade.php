@@ -33,7 +33,7 @@
             <a class="header_text" href="{{ url('/') }}" class="nav_link {{ request()->is('/') ? 'active' : '' }}">SatoeTrack✓</a>
         </div>
         <div class="header_img">
-            <img src="{{ asset('assets/smkn1.png') }}" alt="logo" style="width: 100%; height: 100%;">
+            <img src="{{ asset('assets/logo/smkn1.png') }}" alt="logo" style="width: 100%; height: 100%;">
         </div>
     </header>
     <!-- Sidebar -->
@@ -41,7 +41,7 @@
         <nav class="nav">
             <div>
                 <a href="#" class="nav_logo">
-                    <img src="{{ asset('assets/avatar.png') }}" class="nav-logo-avatar" alt="Avatar">
+                    <img src="{{ asset('assets/icon/avatar.svg') }}" class="nav-logo-avatar" alt="Avatar">
                     <span class="nav_logo-name fw-bold fs-5">Ian Sopian</span>
                 </a>
                 <div class="nav_list">
@@ -59,22 +59,22 @@
                     <div class="nav_accordion">
                         <a href="#" class="nav_link accordion-toggle">
                             <i class='bx bx-user nav_icon'></i>
-                            <span class="nav_name">Users</span>
+                            <span class="nav_name">Kelola Akun</span>
                             <i class='bx bx-chevron-down nav_accordion-icon'></i>
                         </a>
                         <div class="accordion-menu">
                             <a href="{{ url('/kelola-peminjam') }}" class="nav_link sub-link {{ request()->is('/kelola-peminjam') ? 'active' : '' }}">
                                 <i class='bx bx-user-plus nav_icon'></i>
-                                <span class="nav_name">Tambah Peminjam</span>
+                                <span class="nav_name">Kelola Peminjam</span>
                             </a>
                             <a href="{{ url('/kelola-admin') }}" class="nav_link sub-link {{ request()->is('/kelola-admin') ? 'active' : '' }}">
                                 <i class='bx bx-group nav_icon'></i>
-                                <span class="nav_name">Tambah Admin</span>
+                                <span class="nav_name">Kelola Admin</span>
                             </a>
-                            <a href="#" class="nav_link sub-link">
+                            <!-- <a href="#" class="nav_link sub-link">
                                 <i class='bx bx-user-check nav_icon'></i>
                                 <span class="nav_name">Permissions</span>
-                            </a>
+                            </a> -->
                         </div>
                     </div>
 
@@ -131,7 +131,7 @@
         </nav>
     </div>
     <main>
-        <h1 class="msr-font secondary-color px-2">Welcome, <span class="fw-bolder">Ian Sopian</span></h1>
+        <h1 class="msr-font secondary-color px-2">Welcome, <span class="fw-bolder">Ian Sopian</span> 👋</h1>
         @yield('content')
     </main>
     <footer>
