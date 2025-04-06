@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Peminjam extends Model
+class TemporaryPeminjam extends Model
 {
-    use HasFactory;
-    
-    protected $table = 'peminjams';
+    protected $table = 'temporary_peminjams';
     protected $fillable = [
         'nama',
         'nis',
@@ -19,5 +16,6 @@ class Peminjam extends Model
         'password',
         'status',
         'role',
+        'kode_import'
     ];
 }

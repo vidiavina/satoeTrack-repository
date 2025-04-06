@@ -20,26 +20,6 @@
         letter-spacing: 0.5px;
     }
 
-    .role-badge {
-        display: inline-flex;
-        justify-content: center;
-        padding: 8px 20px;
-        border-radius: 20px;
-        background: rgba(7, 164, 227, 0.1);
-        color: #07A4E3;
-        font-weight: bold;
-    }
-
-    .role-badge.purple {
-        background: rgba(156, 39, 176, 0.1);
-        color: #9c27b0;
-    }
-
-    .role-badge.green {
-        background: rgba(76, 175, 80, 0.1);
-        color: #4CAF50;
-    }
-
     .action-btn {
         display: inline-flex;
         align-items: center;

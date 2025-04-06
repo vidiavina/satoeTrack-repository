@@ -1,6 +1,9 @@
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    /* SIDEBAR */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
     :root {
         --header-height: 5rem;
         --nav-width: 68px;
@@ -8,6 +11,9 @@
         --first-color: #326CBC;
         --first-color-light: #AFA5D9;
         --white-color: #F7F6FB;
+        --secondary-color: #719099;
+        --msr-font: "Montserrat", sans-serif;
+        --inter: "Inter", sans-serif;
         --body-font: "Nunito", sans-serif;
         --header-font: "Montserrat", sans-serif;
         --normal-font-size: 1rem;
@@ -20,6 +26,10 @@
 
     .msr-font {
         font-family: "Montserrat", sans-serif;
+    }
+    
+    .inter {
+        font-family: "Inter", sans-serif;
     }
 
     *,
@@ -401,6 +411,39 @@
         align-items: center;
         justify-content: flex-end;
     }
+    
+    .select2-container {
+        width: 100% !important;
+    }
+    
+    .select2-container .select2-selection--single {
+        height: 35px;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 35px;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 33px;
+    }
+    
+    .tooltip.fade {
+      transition: opacity .17s ease-out;
+    }
+    
+    .tooltip .tooltip-inner {
+        font-family: var(--inter) !important;
+        font-size: 1rem;
+    }
+    
+    .dropify-wrapper {
+        font-family: var(--inter) !important;
+    }
+    
+    .dropify-wrapper span>p {
+        font-size: 1rem !important;
+    }
 
     /* BUTTONS */
     .btn-main {
@@ -431,5 +474,29 @@
     div.dt-container .dt-paging .dt-paging-button:hover, div.dt-container .dt-paging .dt-paging-button:active {
         border-color: #07A4E3;
         background: linear-gradient(45deg, #07A4E3, #38C8F1);   
+    }
+    
+    .role-badge {
+        display: inline-flex;
+        justify-content: center;
+        padding: 8px 20px;
+        border-radius: 20px;
+        background: rgba(7, 164, 227, 0.1);
+        color: #07A4E3;
+        font-weight: bold;
+    }
+
+    .role-badge.purple {
+        background: rgba(156, 39, 176, 0.1);
+        color: #9c27b0;
+    }
+
+    .role-badge.green {
+        background: rgba(76, 175, 80, 0.1);
+        color: #4CAF50;
+    }
+    .role-badge.gray {
+        background: rgba(0, 0, 0, 0.125);
+        color: #555;
     }
 </style>

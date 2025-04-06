@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
@@ -32,8 +32,8 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info('Incoming request data:', $request->all());
-        dump($request->all());
+        // Log::info('Incoming request data:', $request->all());
+        // dump($request->all());
 
         try {
             $validated = $request->validate([
@@ -44,12 +44,12 @@ class AdminController extends Controller
                 'role' => ['required', 'integer'],
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::error('Validation error:', $e->errors());
+            // Log::error('Validation error:', $e->errors());
             return redirect()->back()->withErrors($e->errors())->withInput();
         }
 
-        dump($validated);
-        Log::info('Hasil validasi', $validated);
+        // dump($validated);
+        // Log::info('Hasil validasi', $validated);
         // Validation errors are automatically handled by Laravel, so this block is unnecessary.
 
         try {
@@ -107,7 +107,7 @@ class AdminController extends Controller
                 'role' => ['required', 'integer'],
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::error('Validation error:', $e->errors());
+            // Log::error('Validation error:', $e->errors());
             return redirect()->back()->withErrors($e->errors())->withInput();
         }
 
@@ -130,9 +130,9 @@ class AdminController extends Controller
      */
     public function destroy(Request $request)
     {
-        dump($request->all());
+        // dump($request->all());
         $adminId = $request->id;
-        dump($adminId);
+        // dump($adminId);
         $admin = Admin::find($adminId);
         if (!$admin) {
             return response()->json(['message' => 'Admin tidak ditemukan'], 404);

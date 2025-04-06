@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @stack('styles_top')
     @include('layout.styles.style')
     <style>
@@ -62,13 +63,13 @@
                             <i class='bx bx-chevron-down nav_accordion-icon'></i>
                         </a>
                         <div class="accordion-menu">
-                            <a href="#" class="nav_link sub-link">
+                            <a href="{{ url('/kelola-peminjam') }}" class="nav_link sub-link {{ request()->is('/kelola-peminjam') ? 'active' : '' }}">
                                 <i class='bx bx-user-plus nav_icon'></i>
-                                <span class="nav_name">Add User</span>
+                                <span class="nav_name">Tambah Peminjam</span>
                             </a>
                             <a href="{{ url('/kelola-admin') }}" class="nav_link sub-link {{ request()->is('/kelola-admin') ? 'active' : '' }}">
                                 <i class='bx bx-group nav_icon'></i>
-                                <span class="nav_name">Add Admin</span>
+                                <span class="nav_name">Tambah Admin</span>
                             </a>
                             <a href="#" class="nav_link sub-link">
                                 <i class='bx bx-user-check nav_icon'></i>
@@ -137,9 +138,17 @@
         <!-- place footer here -->
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -172,6 +181,8 @@
             });
 
             $('.select2').select2();
+            
+            $('.dropify').dropify();
         });
 
         @if(session('success'))
@@ -190,16 +201,14 @@
             icon: 'error',
             title: 'Oops...',
             text: "{{ session('error') }}",
-            timer: 3000,
-            timerProgressBar: true,
-            showConfirmButton: false
+            showConfirmButton: true
         });
         @endif
 
         @if($errors->any())
         Swal.fire({
             icon: 'error',
-            title: 'Terjadi Kesalahan!',
+            title: 'Terjadi Kesalahan! Silakan coba lagi',
             html: `
         <ul style='text-align: left; list-style-type: none; padding: 0;'>
             @foreach ($errors->all() as $error)
