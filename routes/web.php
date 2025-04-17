@@ -12,4 +12,10 @@ Route::get('/jurusan', function () {
     return view('layout.peminjam.jurusan'); 
 })->name('jurusan');
 
+Route::get('/tatausaha', function () {
+    return view('layout.peminjam.tatausaha'); 
+})->name('tatausaha');
 
+Route::get('/sarpras', function () {
+    return view('layout.peminjam.sarpras'); 
+})->name('sarpras');

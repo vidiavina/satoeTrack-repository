@@ -31,8 +31,8 @@
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
             <a class="header_text" href="{{ url('/') }}" class="nav_link {{ request()->is('/') ? 'active' : '' }}">SatoeTrack✓</a>
         </div>
-        <div class="header_img"> 
-            <img src="{{ asset('assets/smkn1.png') }}" alt="logo" style="width: 100%; height: 100%;"> 
+        <div class="header_img">
+            <img src="{{ asset('assets/smkn1.png') }}" alt="logo" style="width: 100%; height: 100%;">
         </div>
         @if(session()->has('success'))
         <div class="alert alert-success">
@@ -47,10 +47,12 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <a href="#" class="nav_logo">
-                    <img src="{{ asset('assets/avatar.png') }}" class="nav-logo-avatar" alt="Avatar">
-                    <span class="nav_logo-name fw-bold fs-5">Ian Sopian</span>
-                </a>
+                <div class="d-flex align-items-center p-3">
+                    <a href="#" class="nav_logo">
+                        <img src="{{ asset('assets/avatar.png') }}" class="nav-logo-avatar" alt="Avatar">
+                        <span class="nav_logo-name fw-bold fs-5">Ian Sopian</span>
+                    </a>
+                </div>
                 <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"> <i class="bx bx-history nav_icon"></i>
                         <span class="nav_name">Riwayat pinjam</span> </a></div>
             </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Log Out</span> </a>
@@ -109,79 +111,42 @@
             // Your code to run since DOM is loaded and ready
         });
     </script>
-        <div class="welcome">
-            <a href="" class="arrow">
-            <i class="bx bx-left-arrow-alt"></i>
-            </a>
-            <div class="title">
-            <h1>Pilih Jurusan</h1>
-            </div>
-        </div>
-
-
-
-        <div class="container mt-5">
-            <!-- Baris Pertama: 3 Card -->
-            <div class="row">
-                <div class="col-md-4 mb-4 ">
-                    <a href="" class="card p-4">
-                        <div class="line"></div>
-                        <h2 class="jurusan">Pengembangan perangkat lunak dan gim</h2>
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a href="" class="card p-4">
-                        <div class="line"></div>
-                        <h2 class="jurusan">Teknik komputer jaringan</h2>
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a href="" class="card p-4">
-                        <div class="line"></div>
-                        <h2 class="jurusan">Desain Komunikasi Visual</h2>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Baris Kedua: 3 Card -->
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <a href="" class="card p-4">
-                        <div class="line"></div>
-                        <h2 class="jurusan">Teknik Kendaraan Ringan</h2>
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a href="" class="card p-4">
-                        <div class="line"></div>
-                        <h2 class="jurusan">Teknik Permesinan</h2>
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a href="" class="card p-4">
-                        <div class="line"></div>
-                        <h2 class="jurusan">Teknik Pengelasan</h2>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Baris Ketiga: 2 Card Ditengah -->
-            <div class="row justify-content-center">
-                <div class="col-md-4 mb-4">
-                    <a href="" class="card p-4">
-                        <div class="line"></div>
-                        <h2 class="jurusan">Busana Butik</h2>
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a href="" class="card p-4">
-                        <div class="line"></div>
-                        <h2 class="jurusan">Akuntansi</h2>
-                    </a>
-                </div>
-            </div>
-        </div>
+<div class="welcome">
+    <a href="" class="arrow">
+        <i class="bx bx-left-arrow-alt"></i>
+    </a>
+    <div class="title">
+        <h1>List Barang</h1>
+        <p>Tata Usaha</p>
     </div>
+</div>
+
+    <div class="table-responsive text-center">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Merk</th>
+                    <th>Spesifikasi</th>
+                    <th>Kategori</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Proyektor</td>
+                    <td>Sony</td>
+                    <td>0045</td>
+                    <td>Elektronik</td>
+                    <td>Button</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
 
 </body>
 

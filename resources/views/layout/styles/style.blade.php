@@ -59,6 +59,7 @@
 
     }
 
+
     .header_left {
         display: flex;
         align-items: center;
@@ -294,33 +295,34 @@
         }
     }
 
-    .container {
-        margin: 40px auto;
-        width: 80%;
-    }
+
     .welcome {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-    }
+    display: flex;
+    align-items: flex-start; 
+    justify-content: flex-start;
+}
 
-    .welcome h1 {
-        font-family: var(--header-font);
-        font-size: 64px;
-        color: #6c7a89;
-        font-weight: bold;
-    }
-
-    .welcome p {
-        font-size: 40px;
-        color: #a0a5ad;
-        margin-top: -10px;
-    }
-    .arrow{
-
+.arrow {
     font-size: 40px;
     color: black;
-    }
+    margin-right: 15px;
+}
+
+
+.title h1 {
+    font-family: var(--header-font);
+    font-size: 44px;
+    color: #6c7a89;
+    font-weight: bold;
+    margin: 0;
+}
+
+.title p {
+    font-size: 28px;
+    color: #a0a5ad;
+    margin: 0;
+}
+
 
     .cards {
         display: flex;
@@ -359,7 +361,7 @@
     }
 
     .jurusan {
-        font-size: 25px;
+        font-size: 20px;
         color: #6c7a89;
         font-family: var(--body-font);
         padding-left: 20px;

@@ -127,13 +127,13 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="" class="card p-4">
+                    <a href="{{ route('tatausaha') }}" class="card p-4">
                         <div class="line"></div>
                         <h2 class="text">Tata<br>Usaha</h2>
                     </a>
                 </div>
                 <div class="col-md-12 d-flex justify-content-center mt-5">
-                    <a href="" class="card p-4">
+                    <a href="{{ route('sarpras') }}" class="card p-4">
                         <div class="line"></div>
                         <h2 class="text">Sarpras</h2>
                     </a>
