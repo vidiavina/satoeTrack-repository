@@ -43,6 +43,10 @@ Route::get('/get-admin/{id}', [AdminController::class, 'edit'])->name('edit-admi
 Route::get('/get-peminjam/{id}', [PeminjamController::class, 'edit'])->name('edit-peminjam');
 Route::post('/status-peminjam', [PeminjamController::class, 'updateStatus'])->name('update-status-peminjam');
 
+Route::get('/barang', function() {
+    return view('layout.peminjam.index');
+});
+
 Route::get('/jurusan', function () {
     return view('layout.peminjam.jurusan'); 
 })->name('jurusan');
