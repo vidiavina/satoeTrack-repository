@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
@@ -57,7 +58,7 @@ class AdminController extends Controller
                 'nama' => $validated['nama'],
                 'email' => $validated['email'],
                 'no_telp' => $validated['no_telp'],
-                'password' => bcrypt($validated['password']),
+                'password' => Hash::make($validated['password']),
                 'role' => $validated['role'],
             ]);
             return redirect()->route('kelola-admin')->with('success', 'Admin berhasil dibuat');
@@ -116,7 +117,7 @@ class AdminController extends Controller
                 'nama' => $validated['nama'],
                 'email' => $validated['email'],
                 'no_telp' => $validated['no_telp'],
-                'password' => $request->password ? bcrypt($request->password) : $id->password,
+                'password' => $request->password ? Hash::make($request->password) : $id->password,
                 'role' => $validated['role'],
             ]);
             return redirect()->route('kelola-admin')->with('success', 'Admin berhasil diperbarui');

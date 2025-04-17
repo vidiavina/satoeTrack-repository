@@ -1,5 +1,10 @@
+@php
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+@endphp
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <title>SatoeTrack | @yield('title')</title>
@@ -19,6 +24,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     @stack('styles_top')
     @include('layout.styles.style')
     <style>
@@ -27,13 +33,23 @@
 </head>
 
 <body id="body-pd">
+    @if (!request()->is('login'))
     <header class="header" id="header">
         <div class="header_left">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
             <a class="header_text" href="{{ url('/') }}" class="nav_link {{ request()->is('/') ? 'active' : '' }}">SatoeTrack✓</a>
         </div>
-        <div class="header_img">
-            <img src="{{ asset('assets/logo/smkn1.png') }}" alt="logo" style="width: 100%; height: 100%;">
+        <div class="d-flex-jend gap-5">
+            <a href="{{ route('logout') }}" class="nav_link mb-0" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class='bx bx-log-out nav_icon' style="color: red"></i>
+                <span class="text-danger fs-5">Logout</span>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <div class="header_img">
+                <img src="{{ asset('assets/logo/smkn1.png') }}" alt="logo" style="width: 100%; height: 100%;">
+            </div>
         </div>
     </header>
     <!-- Sidebar -->
@@ -42,7 +58,7 @@
             <div>
                 <a href="#" class="nav_logo">
                     <img src="{{ asset('assets/icon/avatar.svg') }}" class="nav-logo-avatar" alt="Avatar">
-                    <span class="nav_logo-name fw-bold fs-5">Ian Sopian</span>
+                    <span class="nav_logo-name fw-bold fs-5">{{ Str::limit(authUser()->nama ?? 'Guest', 12, '...') }}</span>
                 </a>
                 <div class="nav_list">
                     <!-- Simple nav links -->
@@ -56,6 +72,7 @@
                     </a>
 
                     <!-- Accordion Menu 1 -->
+                    @if (Auth::guard('admin')->check()) 
                     <div class="nav_accordion">
                         <a href="#" class="nav_link accordion-toggle">
                             <i class='bx bx-user nav_icon'></i>
@@ -71,12 +88,9 @@
                                 <i class='bx bx-group nav_icon'></i>
                                 <span class="nav_name">Kelola Admin</span>
                             </a>
-                            <!-- <a href="#" class="nav_link sub-link">
-                                <i class='bx bx-user-check nav_icon'></i>
-                                <span class="nav_name">Permissions</span>
-                            </a> -->
                         </div>
                     </div>
+                    @endif
 
                     <!-- Accordion Menu 2 -->
                     <div class="nav_accordion">
@@ -114,24 +128,24 @@
                         <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
                         <span class="nav_name">Statistics</span>
                     </a>
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                        <span class="nav_name">Statistics</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                        <span class="nav_name">Statistics</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-log-out nav_icon'></i>
-                        <span class="nav_name">Log out</span>
-                    </a>
                 </div>
+                <a href="{{ route('logout') }}" class="nav_link mb-0" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class='bx bx-log-out nav_icon' style="color: red"></i>
+                    <span class="nav_name text-danger fs-5">Logout</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
         </nav>
     </div>
+    @endif
     <main>
-        <h1 class="msr-font secondary-color px-2">Welcome, <span class="fw-bolder">Ian Sopian</span> 👋</h1>
+        @if (!request()->is('login'))
+        <h1 class="msr-font secondary-color px-2">
+            Welcome, <span class="fw-bolder">{{ authUser()->nama ?? 'Guest' }}</span> 👋
+        </h1>
+        @endif
         @yield('content')
     </main>
     <footer>
@@ -181,43 +195,43 @@
             });
 
             $('.select2').select2();
-            
+
             $('.dropify').dropify();
         });
 
-        @if(session('success'))
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            text: "{{ session('success') }}",
-            timer: 3000,
-            timerProgressBar: true,
-            showConfirmButton: false
-        });
-        @endif
+        <?php if (session('success')): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: "<?php echo session('success'); ?>",
+                timer: 3000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
+        <?php endif; ?>
 
-        @if(session('error'))
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: "{{ session('error') }}",
-            showConfirmButton: true
-        });
-        @endif
+        <?php if (session('error')): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "<?php echo session('error'); ?>",
+                showConfirmButton: true
+            });
+        <?php endif; ?>
 
-        @if($errors->any())
-        Swal.fire({
-            icon: 'error',
-            title: 'Terjadi Kesalahan! Silakan coba lagi',
-            html: `
-        <ul style='text-align: left; list-style-type: none; padding: 0;'>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
+        <?php if ($errors->any()): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Terjadi Kesalahan!',
+                html: `
+        <ul style='text-align: center; list-style-type: none; padding: 0;'>
+            <?php foreach ($errors->all() as $error): ?>
+            <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
         </ul>
         `,
-        });
-        @endif
+            });
+        <?php endif; ?>
     </script>
 </body>
 

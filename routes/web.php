@@ -1,20 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PeminjamController;
 
+Route::middleware('guest:web,admin,peminjam')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+    // Add other guest-only routes here
+});
 
-Route::prefix('/')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::middleware(['auth:admin,peminjam'])->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Ensure this route exists
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
+Route::middleware(['auth:admin'])->group(function () {
     // CRUD ADMIN
     Route::get('/kelola-admin', [AdminController::class, 'index'])->name('kelola-admin');
     Route::post('/kelola-admin', [AdminController::class, 'store'])->name('simpan-admin');
     Route::put('/kelola-admin/update/{id}', [AdminController::class, 'update'])->name('update-admin');
     Route::post('/kelola-admin/hapus/{id}', [AdminController::class, 'destroy']);
     Route::delete('/kelola-admin/hapus/{id}', [AdminController::class, 'destroy'])->name('hapus-admin');
-    
+
     // CRUD PEMINJAM
     Route::get('/kelola-peminjam', [PeminjamController::class, 'index'])->name('kelola-peminjam');
     Route::post('/kelola-peminjam', [PeminjamController::class, 'store'])->name('simpan-peminjam');

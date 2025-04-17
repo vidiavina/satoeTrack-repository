@@ -8,6 +8,7 @@ use App\Models\Peminjam;
 use App\Models\TemporaryPeminjam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
@@ -64,8 +65,7 @@ class PeminjamController extends Controller
                 'nis' => $validated['nis'],
                 'nip' => $validated['nip'],
                 'email' => $validated['email'],
-                'no_telp' => $validated['no_telp'],
-                'password' => bcrypt($validated['password']),
+                'password' => Hash::make($validated['password']),
                 'status' => 1,
             ]);
             return redirect()->route('kelola-peminjam')->with('success', 'Peminjam berhasil dibuat');
@@ -139,7 +139,7 @@ class PeminjamController extends Controller
                 'nip' => $validated['nip'],
                 'email' => $validated['email'],
                 'no_telp' => $validated['no_telp'],
-                'password' => $request->password ? bcrypt($request->password) : $id->password,
+                'password' => $request->password ? Hash::make($request->password) : $id->password,
                 'status' => 1,
             ]);
             return redirect()->route('kelola-peminjam')->with('success', 'Peminjam berhasil diperbarui');
@@ -254,7 +254,7 @@ class PeminjamController extends Controller
                             'role' => $request->role[$i],
                             'email' => $request->email[$i],
                             'no_telp' => $request->no_telp[$i],
-                            'password' => bcrypt($request->password[$i]),
+                            'password' => Hash::make($request->password[$i]),
                             'status' => 1,
                         ]
                     );

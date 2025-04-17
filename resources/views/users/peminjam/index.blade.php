@@ -183,8 +183,7 @@
                     <tr>
                         <th scope="col" style="width: 5%">No</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">NIS</th>
-                        <th scope="col">NIP</th>
+                        <th scope="col">NIS/NIP</th>
                         <th scope="col">Email</th>
                         <th scope="col">No. Telp</th>
                         <th scope="col">Status</th>
@@ -200,8 +199,7 @@
                     <tr>
                         <td scope="row" class="text-center">{{ $no++ }}</td>
                         <td>{{ $datas->nama }}</td>
-                        <td>{{ $datas->nis }}</td>
-                        <td>{{ $datas->nip }}</td>
+                        <td>{{ $datas->nis }} {{ $datas->nip }}</td>
                         <td>{{ $datas->email ?? "-" }}</td>
                         <td class="text-center">{{ $datas->no_telp ?? '-' }}</td>
                         <td>

@@ -396,7 +396,7 @@
         }
 
     }
-
+    
     /* GENERAL */
     .d-flex-center {
         display: flex;
